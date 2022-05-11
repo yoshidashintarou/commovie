@@ -1,0 +1,22 @@
+<h2>マイページ</h2>
+
+<h3>登録情報</h3>
+
+
+
+
+プロフィール画像
+<% if @user.image.attached? %>
+ <%= image_tag @user.image, size: "50x50" %>
+<% else %>
+  <%= image_tag 'no_image', size: "50x50" %>
+<% end %>
+<br>
+
+氏名
+<%= @user.name %>
+<br>
+メールアドレス
+<%= @user.email %>
+<br>
+<%= link_to "編集する", edit_public_users_path %>
