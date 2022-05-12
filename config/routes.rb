@@ -15,8 +15,11 @@ get 'public/about' => 'public/homes#about'
 
 
 namespace :public do
-resource :users
+resources :users
+resources :movies
 end
+
+
 
 
 

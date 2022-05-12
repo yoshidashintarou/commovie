@@ -12,11 +12,10 @@
   <%= image_tag 'no_image', size: "50x50" %>
 <% end %>
 <br>
-
 氏名
 <%= @user.name %>
 <br>
 メールアドレス
 <%= @user.email %>
 <br>
-<%= link_to "編集する", edit_public_users_path %>
+<%= link_to "編集する", edit_public_user_path %>
