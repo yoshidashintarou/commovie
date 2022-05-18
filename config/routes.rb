@@ -9,14 +9,35 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
 }
 
-root to: 'public/homes#top'
 
+devise_scope :user do
+  get 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+end
+
+
+root to: 'public/homes#top'
 get 'public/about' => 'public/homes#about'
 
 
+get "search" => "searches#search"
+
+
+#退会機能
+get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
+patch '/users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
+
+
 namespace :public do
-resources :users
-resources :movies
+ resources :users #顧客
+
+ resources :movies do #映画情報
+  resource :favorites, only: [:create, :destroy]
+ end
+
+ resources :films do#映画感想
+  resource :favorites, only: [:create, :destroy]
+ end
+
 end
 
 

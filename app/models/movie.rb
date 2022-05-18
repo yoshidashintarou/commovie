@@ -1,20 +1,23 @@
 class Movie < ApplicationRecord
+  belongs_to :user
+  has_many :favorites, dependent: :destroy
 
-  def index
-    @movies = Movie.all
+  def favorited?(user)
+   self.favorites.where(user_id: user.id).exists?
   end
 
-  def show
-  end
-
-  def edit
-    @movie = current_user
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @movie = Movie.where("title LIKE?","#{word}")
+    elsif search == "forward_match"
+      @movie = Movie.where("title LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @movie = Movie.where("title LIKE?","%#{word}")
+    elsif search == "partial_match"
+      @movie = Movie.where("title LIKE?","%#{word}%")
+    else
+      @movie = Movie.all
+    end
   end
 
 end
-
-private
-def movie_params
-  params.require(:movie).permit(:title, :body)
-end
-

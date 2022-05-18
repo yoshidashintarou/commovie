@@ -1,4 +1,19 @@
 <h2>ユーザーから投稿頂いた映画情報を掲載してます。気になっている映画の参考にどうぞ。</h2>
 
-<%= @movies.title %>
-<%= @movies.body %>
+
+<% @movies.each do |movie| %>
+<%= movie.title %>
+<%= movie.body %>
+    <% if movie.favorited?(current_user) %>
+        <%= button_to public_movie_favorites_path(movie.id), method: :delete, remote: true do %>
+         　♥<%= movie.favorites.count %>いいね
+        <% end %>
+    <% else %>
+        <%= button_to public_movie_favorites_path(movie.id), method: :post, remote: true do %>
+        　 ♡<%= movie.favorites.count %>いいね
+        <% end %>
+    <% end %>
+<% end %>
+
+
+

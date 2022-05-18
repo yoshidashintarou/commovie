@@ -1,4 +1,5 @@
 class Public::MoviesController < ApplicationController
+
   def index
     @movies = Movie.all
   end
@@ -8,13 +9,16 @@ class Public::MoviesController < ApplicationController
   end
 
   def edit
-    @movie = current_user
   end
 
   def create
     @movie = Movie.new(movie_params)
-    @movie.save
-   redirect_to public_movies_path(@movie)
+    @movie.user = current_user
+    if @movie.save
+      redirect_to public_movies_path(@movie)
+    else
+      render :new
+    end
   end
 
 
@@ -26,7 +30,7 @@ end
 
 private
  def movie_params
-   params.permit(:title, :body)
+   params.require(:movie).permit(:title, :body)
  end
 
 
