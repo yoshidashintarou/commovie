@@ -4,16 +4,9 @@
 <% @movies.each do |movie| %>
 <%= movie.title %>
 <%= movie.body %>
-    <% if movie.favorited?(current_user) %>
-        <%= button_to public_movie_favorites_path(movie.id), method: :delete, remote: true do %>
-         　♥<%= movie.favorites.count %>いいね
-        <% end %>
-    <% else %>
-        <%= button_to public_movie_favorites_path(movie.id), method: :post, remote: true do %>
-        　 ♡<%= movie.favorites.count %>いいね
-        <% end %>
-    <% end %>
+
+<div id="favorite_buttons_<%= movie.id %>">
+<%= render "public/favorites/favorite", movie: movie %>
+</div>
 <% end %>
-
-
 

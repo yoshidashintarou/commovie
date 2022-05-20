@@ -21,11 +21,9 @@ get 'public/about' => 'public/homes#about'
 
 get "search" => "searches#search"
 
-
-#退会機能
-get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
-patch '/users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
-
+namespace :admin do
+ resources :customers #管理者
+end
 
 namespace :public do
  resources :users #顧客
@@ -37,6 +35,11 @@ namespace :public do
  resources :films do#映画感想
   resource :favorites, only: [:create, :destroy]
  end
+ 
+#退会機能
+get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
+patch '/users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
+
 
 end
 

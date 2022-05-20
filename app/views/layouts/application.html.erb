@@ -55,9 +55,6 @@
    <li class="nav-item m-3">
       <%= link_to "新規登録", new_user_registration_path, class: 'btn btn-outline-secondary' %>
     </li>
-    <li class="nav-item m-3">
-      <%= link_to "About", public_about_path, class: 'btn btn-outline-secondary' %>
-    </li>
 
     <li class="nav-item m-3">
       <%= link_to "ログイン", new_user_session_path, class: 'btn btn-outline-secondary' %>
@@ -66,6 +63,11 @@
     <div class="nav-item m-3">
       <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: 'btn btn-outline-secondary' %>
     </div>
+
+    <li class="nav-item m-3">
+      <%= link_to "About", public_about_path, class: 'btn btn-outline-secondary' %>
+    </li>
+
     <% end %>
   </ul>
   </div>

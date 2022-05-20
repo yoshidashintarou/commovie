@@ -19,12 +19,12 @@
 <%= @user.email %>
 <br>
 <%= link_to "編集する", edit_public_user_path %>
-<%= link_to "退会する", unsubscribe_path(current_user) %>
+<%= link_to "退会する", public_unsubscribe_path(current_user) %>
 
 <% if @user.name != "guestuser" %>
 <div class='row'>
   <%= link_to '',edit_public_user_path %>
-  <%= link_to '', unsubscribe_path %>
+  <%#= link_to '', unsubscribe_path %>
 </div>
 <% end %>
 
