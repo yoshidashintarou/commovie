@@ -1,6 +1,6 @@
 class Public::FilmsController < ApplicationController
   def index
-    @films = Film.all
+    @films = Film.page(params[:page]).per(8)
   end
 
   def show
@@ -35,7 +35,7 @@ end
 
 private
  def film_params
-  params.require(:film).permit(:title, :body)
+  params.require(:film).permit(:title, :body,)
  end
 
 

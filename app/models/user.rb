@@ -10,19 +10,20 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
 
   def self.guest
+    print(111111111)
     find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
       user.name = "guestuser"
    end
   end
 
-  
+
 
 
   def active_for_authentication?
-      super && (is_deleted == false)
+    super && (is_deleted == false)
   end
-  
+
 
   def self.looks(search, word)
     if search == "perfect_match"

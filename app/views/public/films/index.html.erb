@@ -1,8 +1,30 @@
 <h2>ユーザーから投稿頂いた映画感想を掲載してます。気になっている映画の参考にどうぞ。</h2>
-
-<% @films.each do |film| %>
-<%= film.title %>
-<%= film.body %>
+ <% @films.each do |film| %>
+   <div class="container">
+    <div class="row">
+      <div class="card" style="width: 1000px; height: 150px; border: 2px solid; margin: 10px">
+        <span>
+          <% if film.user.image.attached? %>
+           <%= image_tag film.user.image, size: "50x50" %>
+          <% else %>
+            <%= image_tag 'no_image', size: "50x50" %>
+          <% end %>
+          <%= film.user.name %>さんからの投稿
+        </span>
+           映画のタイトル
+          <%= film.title %><br>
+           映画の感想
+          <%= film.body %>
+          <div class="d-flex align-items-end">
+            <%= film.created_at %>
+          </div>
+      </div>
+    </div>
+  </div>
 <% end %>
-
+<div class="container">
+  <div class="row">
+    <font size="5"><%= paginate @films %></font>
+  </div>
+</div>
 

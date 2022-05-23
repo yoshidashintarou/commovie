@@ -35,12 +35,10 @@ namespace :public do
  resources :films do#映画感想
   resource :favorites, only: [:create, :destroy]
  end
- 
+
 #退会機能
 get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
 patch '/users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
-
-
 end
 
 

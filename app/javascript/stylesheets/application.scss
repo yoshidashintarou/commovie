@@ -1,2 +1,18 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+
+.wrapper{
+    min-height: 120vh;
+    position: relative;
+    padding-bottom: 200px;
+    box-sizing: border-box;
+}
+
+footer{
+    width: 100%;
+    text-align: center;
+    padding: 30px 0px;
+ position: absolute;
+    bottom: 0;
+}

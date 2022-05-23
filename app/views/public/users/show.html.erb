@@ -23,8 +23,9 @@
 
 <% if @user.name != "guestuser" %>
 <div class='row'>
+  
   <%= link_to '',edit_public_user_path %>
-  <%#= link_to '', unsubscribe_path %>
+  <%= link_to '', public_unsubscribe_path %>
 </div>
 <% end %>
 

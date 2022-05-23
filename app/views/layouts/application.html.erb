@@ -3,9 +3,9 @@
   <head>
     <title>Eiga</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -43,10 +43,10 @@
 
 
     <% elsif admin_signed_in? %>
-
-    <li class="nav-item m-3">
-      <%= link_to "About", public_about_path, class: 'btn btn-outline-secondary' %>
+   <li class="nav-item m-3">
+      <%= link_to "顧客一覧", admin_customers_path, class: 'btn btn-outline-secondary' %>
     </li>
+
     <li class="nav-item m-3">
       <%= button_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-outline-secondary' %>
     </li>
@@ -60,43 +60,42 @@
       <%= link_to "ログイン", new_user_session_path, class: 'btn btn-outline-secondary' %>
     </li>
 
-    <div class="nav-item m-3">
-      <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: 'btn btn-outline-secondary' %>
-    </div>
-
     <li class="nav-item m-3">
-      <%= link_to "About", public_about_path, class: 'btn btn-outline-secondary' %>
+      <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: 'btn btn-outline-secondary' %>
     </li>
-
     <% end %>
+
   </ul>
   </div>
 </header>
 <%= notice %>
 <%= alert %>
-<main></main>
+<div class="wrapper">
+ <main></main>
 
     <%= yield %>
-<footer class="fixed-bottom" style="height:120px; background-color: #f5af7d;">
-      <div class="container">
-        <div class="row no-gutters">
-          <div class="col-md-4">
-            <p>映画情報コミュニティサイト</p>
-          </div>
-          <div class="col-md-8">
-            <h6 class="text-white mt-2 mb-3">Link</h6>
-            <ul class="p-0 list-unstyled">
-              <li>
-                <a href="" title="About" class="text-white-50">会社概要</a>
-              </li>
-              <li>
-                <a href="" title="License informations" class="text-white-50">プライバシーポリシー</a>
-              </li>
-            </ul>
+
+   <footer class="fixed-bottom" style="height:130px; background-color: #f5af7d;">
+        <div class="container">
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              <p>映画情報コミュニティサイト</p>
+            </div>
+            <div class="col-md-8">
+              <h6 class="text-white mt-2 mb-3">Link</h6>
+              <ul class="p-0 list-unstyled">
+                <li>
+                  <a href="" title="About" class="text-white-50">会社概要</a>
+                </li>
+                <li>
+                  <a href="" title="License informations" class="text-white-50">プライバシーポリシー</a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
     </footer>
-  </body>
-
+  </div>
+ </body>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </html>
