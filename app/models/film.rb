@@ -1,6 +1,17 @@
 class Film < ApplicationRecord
   belongs_to :user
-  has_many :favorites, dependent: :destroy
+  has_many :film_favorites, dependent: :destroy
+  has_many :comments, dependent: :destroy
+
+  validates :title, presence: true
+  validates :body, presence: true
+
+
+
+  def filmfavorited?(user)
+   FilmFavorite.where(user_id: user.id, film_id: self.id).exists?
+  end
+
 
   def self.looks(search, word)
     if search == "perfect_match"

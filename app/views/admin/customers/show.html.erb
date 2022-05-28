@@ -1,0 +1,45 @@
+<div class="container">
+  <br><br>
+      <% if @user.image.attached? %>
+        <%= image_tag @user.image, size: "100x100" %>
+      <% else %>
+        <%= image_tag 'no_image', size: "100x100" %>
+      <% end %>
+
+     <table border "1" style= "width: 350px">
+        <tr>
+          <td>
+            氏名
+          </td>
+          <td>
+            <%= @user.name %>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            メールアドレス
+          </td>
+          <td>
+            <%= @user.email %>
+          </td>
+        </tr>
+      </table>
+  <br><br>
+
+        <div class="row">
+          <div class="card" style="width: 1000px; height: 150px; border: 2px solid; margin: 10px">
+            <%= link_to  @movie.title, edit_admin_customer_path %><br>
+            <%= @movie.body %>
+           </div>
+        </div>
+
+         <div class="row">
+            <div class="card" style="width: 1000px; height: 150px; border: 2px solid; margin: 10px">
+              <%= link_to  @film.title, edit_admin_customer_path %><br>
+              <%= @film.body %>
+             </div>
+          </div>
+
+</div>
+

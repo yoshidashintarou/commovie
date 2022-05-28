@@ -6,7 +6,7 @@
       <div class="card" style="width: 1000px; height: 150px; border: 2px solid; margin: 10px">
         <span>
           <% if movie.user.image.attached? %>
-           <%= image_tag movie.user.image, size: "50x50" %>
+           <%= image_tag movie.user.image, size: "50x50" ,class: "rounded-circle" %>
           <% else %>
             <%= image_tag 'no_image', size: "50x50" %>
           <% end %>
@@ -14,14 +14,13 @@
         </span>
           映画のタイトル
           <%= movie.title %><br>
-          映画の情報
           <%= movie.body %>
-        <div id="favorite_buttons_<%= movie.id %>">
-          <%= render "public/favorites/favorite", movie: movie %>
-        </div>
-          <div class="d-flex align-items-end">
-            <%= movie.created_at %>
-          </div>
+            <div id="favorite_buttons_<%= movie.id %>">
+              <%= render "public/favorites/favorite", movie: movie %>
+            </div>
+            <div class="d-flex align-items-end">
+              <%= movie.created_at %>
+            </div>
       </div>
     </div>
   </div>

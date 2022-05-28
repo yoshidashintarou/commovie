@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+
+
+main {
+   background-image: url(cinema-4609877_1280);
+   opacity: 0.5;
+}

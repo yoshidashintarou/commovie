@@ -1,13 +1,15 @@
-<h3>投稿</h3>
-
-<%= form_with model: @movie, url: public_movies_path do |f| %>
-
-
- <h4>映画タイトル</h4>
-  <%= f.text_field :title %>
- <h4>映画情報</h4>
-  <%= f.text_field :body %>
-  <br><br>
-  <%= f.submit '投稿する' %>
-
-<% end %>
+<div class="container">
+  <div class="row">
+     <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-4">
+       <h1>投稿</h1>
+       <%= form_with model: @movie, url: public_movies_path do |f| %>
+        <h4>映画タイトル</h4>
+         <%= f.text_field :title,class: "w-100"  %>
+        <h4>映画情報</h4>
+         <%= f.text_field :body,class: "w-100" %>
+         <br><br>
+         <%= f.submit '投稿する',class: "w-75 btn btn-primary" %>
+       <% end %>
+    </div>
+  </div>
+</div>

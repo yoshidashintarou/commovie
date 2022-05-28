@@ -3,7 +3,6 @@
   <head>
     <title>Eiga</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -16,7 +15,7 @@
     <% if user_signed_in? %>
 
     <li class="nav-item m-3">
-      <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
     </li>
 
     <li class="nav-item m-3">
@@ -48,7 +47,7 @@
     </li>
 
     <li class="nav-item m-3">
-      <%= button_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-outline-secondary' %>
+      <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-outline-secondary' %>
     </li>
 
     <% else %>
@@ -61,19 +60,22 @@
     </li>
 
     <li class="nav-item m-3">
-      <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: 'btn btn-outline-secondary' %>
+      <%= link_to 'ゲストログイン', users_guest_sign_in_path, class: 'btn btn-outline-secondary' %>
     </li>
     <% end %>
 
   </ul>
   </div>
 </header>
+
 <%= notice %>
 <%= alert %>
-<div class="wrapper">
- <main></main>
 
-    <%= yield %>
+ <main>
+  <%= yield %>
+ </main>
+
+
 
    <footer class="fixed-bottom" style="height:130px; background-color: #f5af7d;">
         <div class="container">
@@ -99,3 +101,6 @@
  </body>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </html>
+
+
+

@@ -1,4 +1,5 @@
 class Public::FilmsController < ApplicationController
+
   def index
     @films = Film.page(params[:page]).per(8)
   end
@@ -16,6 +17,7 @@ class Public::FilmsController < ApplicationController
     if @film.save
      redirect_to public_films_path(@film)
     else
+     flash[:notice] = "空白だと投稿できません"
      render :new
     end
   end
@@ -37,6 +39,8 @@ private
  def film_params
   params.require(:film).permit(:title, :body,)
  end
+
+
 
 
 

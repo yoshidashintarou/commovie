@@ -1,22 +1,37 @@
 <h2>検索結果</h2>
-
-<table class="table table-hover table-inverse">
-
-  <% if @range == "User" %>
-    <tbody>
-      <% @users.each do |user| %>
-        <tr>
-          <td><%= user.name %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  <% else %>
-    <tbody>
-      <% @movies.each do |movie| %>
-       <%= movie.user.name %>
-       <%= movie.title %>
-       <%= movie.body %>
-      <% end %>
-    </tbody>
-  <% end %>
-</table>
+<% if @range == "User" %>
+  <% @users.each do |user| %>
+    <div class="container">
+      <div class="row">
+        <div class="card" style="width: 1000px; height: 150px; border: 2px solid; margin: 10px">
+          <% if user.image.attached? %>
+            <%= image_tag user.image, size: "50x50" %>
+          <% else %>
+            <%= image_tag 'no_image', size: "50x50" %>
+          <% end %>
+            <%= user.name %>
+        </div>
+      </div>
+    </div>
+   <% end %>
+<% else %>
+   <% @movies.each do |movie| %>
+    <div class="container">
+      <div class="row">
+        <div class="card" style="width: 1000px; height: 150px; border: 2px solid; margin: 10px">
+          <span>
+            <% if movie.user.image.attached? %>
+              <%= image_tag movie.user.image, size: "50x50" %>
+            <% else %>
+              <%= image_tag 'no_image', size: "50x50" %>
+            <% end %>
+              <%= movie.user.name %>さんからの投稿
+          </span>
+          映画のタイトル
+          <%= movie.title %><br>
+          <%= movie.body %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+<% end %>

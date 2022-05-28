@@ -33,7 +33,7 @@ namespace :public do
  end
 
  resources :films do#映画感想
-  resource :favorites, only: [:create, :destroy]
+  resource :filmfavorites, only: [:create, :destroy]
  end
 
 #退会機能
@@ -45,5 +45,5 @@ end
 
 
 
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+# For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

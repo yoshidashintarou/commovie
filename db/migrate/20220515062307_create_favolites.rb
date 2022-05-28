@@ -5,7 +5,8 @@ class CreateFavolites < ActiveRecord::Migration[6.1]
       t.timestamps
 
       t.references :user, null: false, foreign_key: true
-      t.references :movie, null: false, foreign_key: true
-    end
+      t.references :movie
+      t.references :film
+     end
   end
 end
