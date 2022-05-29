@@ -1,45 +1,31 @@
-<div class="container">
-  <br><br>
-      <% if @user.image.attached? %>
-        <%= image_tag @user.image, size: "100x100" %>
-      <% else %>
-        <%= image_tag 'no_image', size: "100x100" %>
-      <% end %>
 
-     <table border "1" style= "width: 350px">
-        <tr>
-          <td>
-            氏名
-          </td>
-          <td>
-            <%= @user.name %>
-          </td>
-        </tr>
 
-        <tr>
-          <td>
-            メールアドレス
-          </td>
-          <td>
-            <%= @user.email %>
-          </td>
-        </tr>
-      </table>
-  <br><br>
+  <% @films.each do |film| %>
+    <% film.comments.each do |comment| %>
+    <div class="container">
+      <div class="row">
 
-        <div class="row">
-          <div class="card" style="width: 1000px; height: 150px; border: 2px solid; margin: 10px">
-            <%= link_to  @movie.title, edit_admin_customer_path %><br>
-            <%= @movie.body %>
-           </div>
+        <div class="card" style="width: 1000px; height: 150px; border: 2px solid; margin: 10px">
+              <% next if comment.id.blank? %>
+              <%= comment.user.name %><br>
+              <%= comment.comment %>
+               <div class="d-flex align-items-end">
+                  <div style="margin-left: 900px; margin-bottom: 100px">
+                    <%= link_to "削除", public_film_comment_path(comment.film,comment), method: :delete, class: "btn btn-sm btn-danger" %>
+                  </div>
+               </div>
+
         </div>
+      </div>
+    </div>
 
-         <div class="row">
-            <div class="card" style="width: 1000px; height: 150px; border: 2px solid; margin: 10px">
-              <%= link_to  @film.title, edit_admin_customer_path %><br>
-              <%= @film.body %>
-             </div>
-          </div>
+   <% end %>
+  <% end %>
 
+<div class="row">
+  <div style= "margin: auto">
+    <font size="5"><%= paginate @films %></font>
+  </div>
 </div>
+
 

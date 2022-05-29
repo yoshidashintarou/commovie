@@ -1,3 +1,2 @@
-<%= @film.title %>
-<%= @film.body %>
-<%= button_to "削除", public_film_path, method: :delete, "data-confirm" => "本当に削除しますか？" %>
+ <%= render 'public/films/comment', films: @films %>
+

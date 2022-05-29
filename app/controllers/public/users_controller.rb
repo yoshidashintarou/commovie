@@ -1,6 +1,7 @@
 class Public::UsersController < ApplicationController
   before_action :ensure_guest_user, only: [:edit, :unsubscribe]
 
+
   def show
     @user = current_user
   end
@@ -21,6 +22,11 @@ class Public::UsersController < ApplicationController
   def index
   end
 
+  def filmfavorites
+    @user = User.find(params[:id])
+    filmfavorites = FilmFavorite.where(user_id: @user.id).pluck(:film_id)
+    @filmfavorites_fims = Film.find(filmfavorites)
+  end
 
 
 
@@ -50,5 +56,10 @@ private
       redirect_to public_user_path(current_user), notice: 'ゲストユーザーはこの機能を使用することは出来ません。'
     end
   end
+
+ def film_params
+  params.require(:film).permit(:title, :body,)
+ end
+
 
 

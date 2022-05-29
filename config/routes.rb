@@ -26,14 +26,19 @@ namespace :admin do
 end
 
 namespace :public do
- resources :users #顧客
+ resources :users do #顧客
+   member do
+    get :filmfavorites
+   end
+ end
 
  resources :movies do #映画情報
   resource :favorites, only: [:create, :destroy]
  end
 
- resources :films do#映画感想
+ resources :films do #映画感想
   resource :filmfavorites, only: [:create, :destroy]
+  resources :comments, only: [:create, :destroy]
  end
 
 #退会機能
@@ -41,9 +46,10 @@ get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
 patch '/users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
 end
 
-
+end
 
 
 
 # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-end
+
+

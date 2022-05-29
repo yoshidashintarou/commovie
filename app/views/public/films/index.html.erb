@@ -1,7 +1,8 @@
 <h2>ユーザーから投稿頂いた映画感想を掲載してます。気になっている映画の参考にどうぞ。</h2>
 <br><br>
+<div style="height: 1800px">
  <% @films.each do |film| %>
-   <div class="container">
+  <div class="container">
     <div class="row">
       <div class="card" style="width: 1000px; height: 150px; border: 2px solid; margin: 10px;">
         <span>
@@ -18,16 +19,31 @@
            <div id="favorite_buttons_<%= film.id %>">
             <%= render "public/filmfavorites/filmfavorite", film: film %>
            </div>
-          <div class="d-flex align-items-end">
-            <%= film.created_at %>
+          <div class="d-flex align-items-end", style="padding: 0px 15px">
+            <%= film.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+              <div class="text-right">
+                 <div>コメント数: <%= link_to film.comments.count, public_film_path(film.id) %>
+                 <%= link_to 'コメントする', edit_public_film_path(film.id) %>
+                </div>
+              </div>
           </div>
+
       </div>
     </div>
   </div>
-<% end %>
-<div class="container">
-  <div class="row">
+ <% end %>
+
+<div class="row">
+  <div style= "margin: auto">
     <font size="5"><%= paginate @films %></font>
   </div>
 </div>
+
+
+
+
+
+
+
+
 

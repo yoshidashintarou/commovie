@@ -1,0 +1,23 @@
+<div style="height: 1800px">
+  <% films.each do |film| %>
+    <% film.comments.each do |comment| %>
+      <div class="card" style="width: 1000px; height: 150px; border: 2px solid; margin: 10px">
+          <% next if comment.id.blank? %>
+          <%= comment.user.name %><br>
+          <%= comment.comment %>
+           <div class="d-flex align-items-end">
+              <% if comment.user == current_user %>
+              <div style="margin-left: 900px; margin-bottom: 100px">
+                <%= link_to "削除", public_film_comment_path(comment.film,comment), method: :delete, class: "btn btn-sm btn-danger" %>
+              </div>
+           </div>
+          <% end %>
+       </div>
+
+<% end %>
+</div>
+<% end %>
+<div style= "margin: auto">
+  <font size="5"><%= paginate films %></font>
+</div>
+

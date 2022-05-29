@@ -8,8 +8,6 @@ class Admin::CustomersController < ApplicationController
   def show
     @movies = Movie.page(params[:page]).per(5)
     @films = Film.page(params[:page]).per(5)
-    @movie = Movie.find(params[:id])
-    @film = Film.find(params[:id])
     @user = User.find(params[:id])
   end
 
@@ -42,6 +40,10 @@ class Admin::CustomersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :image, :is_deleted)
+  end
+
+  def comment_params
+    params.require(:comment).permit(:comment)
   end
 
 end

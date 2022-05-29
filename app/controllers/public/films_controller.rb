@@ -6,9 +6,12 @@ class Public::FilmsController < ApplicationController
 
   def show
     @film = Film.find(params[:id])
+    @films = Film.page(params[:page]).per(8)
   end
 
   def edit
+    @film = Film.find(params[:id])
+    @films = Film.page(params[:page]).per(8)
   end
 
   def create

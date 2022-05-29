@@ -3,7 +3,6 @@ class Public::FilmfavoritesController < ApplicationController
     favorite = FilmFavorite.new(user_id: current_user.id, film_id: params[:film_id])
     favorite.save
     @film = Film.find(params[:film_id])
-    # render 'public/filmfavorites/create.js.erb'
   end
 
 
