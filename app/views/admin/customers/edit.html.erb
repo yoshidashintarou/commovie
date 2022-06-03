@@ -1,14 +1,14 @@
 <div class="container">
   <%= @user.name %>さんの投稿
-
   <%= form_with model: @movie, url:  admin_customer_path, method: :patch do |f| %>
-      <div class="row">
-        <div class="card" style="width: 1000px; height: 150px; border: 2px solid; margin: 10px">
-            <%= link_to  @movie.title, edit_admin_customer_path %><br>
-            <%= @movie.body %>
-         </div>
+    <div class="row">
+      <div class="card" style="width: 1000px; height: 150px; border: 2px solid; margin: 10px">
+        <%= link_to  @movie.title, edit_admin_customer_path %><br>
+        <%= @movie.body %>
       </div>
-      <% end %>
+    </div>
+  <% end %>
+  
   <%= form_with model: @film, url:  admin_customer_path, method: :patch do |f| %>
       <div class="row">
         <div class="card" style="width: 1000px; height: 150px; border: 2px solid; margin: 10px">
@@ -17,5 +17,4 @@
         </div>
       </div>
   <% end %>
-
 </div>

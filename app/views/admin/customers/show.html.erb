@@ -1,26 +1,21 @@
-
-
-  <% @films.each do |film| %>
-    <% film.comments.each do |comment| %>
+<% @films.each do |film| %>
+  <% film.comments.each do |comment| %>
     <div class="container">
       <div class="row">
-
         <div class="card" style="width: 1000px; height: 150px; border: 2px solid; margin: 10px">
-              <% next if comment.id.blank? %>
-              <%= comment.user.name %><br>
-              <%= comment.comment %>
-               <div class="d-flex align-items-end">
-                  <div style="margin-left: 900px; margin-bottom: 100px">
-                    <%= link_to "削除", public_film_comment_path(comment.film,comment), method: :delete, class: "btn btn-sm btn-danger" %>
-                  </div>
-               </div>
-
+          <% next if comment.id.blank? %>
+          <%= comment.user.name %><br>
+          <%= comment.comment %>
+           <div class="d-flex align-items-end">
+              <div style="margin-left: 900px; margin-bottom: 100px">
+                <%= link_to "削除", public_film_comment_path(comment.film,comment), method: :delete, class: "btn btn-sm btn-danger" %>
+              </div>
+           </div>
         </div>
       </div>
     </div>
-
-   <% end %>
   <% end %>
+<% end %>
 
 <div class="row">
   <div style= "margin: auto">
