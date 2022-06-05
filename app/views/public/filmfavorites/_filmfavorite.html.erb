@@ -1,4 +1,3 @@
-
 <% if film.filmfavorited?(current_user) %>
   <%= link_to public_film_filmfavorites_path(film), method: :delete, remote: true do %>
   ♥<%= film.film_favorites.count %>いいね
