@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :film_favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
 
+  #ゲストログイン機能
   def self.guest
     find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
@@ -19,13 +20,12 @@ class User < ApplicationRecord
   end
 
 
-
-
   def active_for_authentication?
     super && (is_deleted == false)
   end
 
 
+  #検索機能
   def self.looks(search, word)
     if search == "perfect_match"
       @user = User.where("name LIKE?", "#{word}")

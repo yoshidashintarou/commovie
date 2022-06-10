@@ -6,10 +6,13 @@ class Movie < ApplicationRecord
   validates :title, presence: true
   validates :body, presence: true
 
+
+  #いいね機能
   def favorited?(user)
    self.favorites.where(user_id: user.id).exists?
   end
 
+  #検索機能
   def self.looks(search, word)
     if search == "perfect_match"
       @movie = Movie.where("title LIKE?","#{word}")

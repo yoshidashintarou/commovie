@@ -1,22 +1,23 @@
 Rails.application.routes.draw do
 
+#ユーザー
  devise_for :users,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
 
+#管理者
  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
 
-
+#検索機能
 devise_scope :user do
   get 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
 end
 
-
+#ホームページ
 root to: 'public/homes#top'
-get 'public/about' => 'public/homes#about'
 
 
 get "search" => "searches#search"
