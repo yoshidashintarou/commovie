@@ -6,7 +6,6 @@ class Movie < ApplicationRecord
   validates :title, presence: true
   validates :body, presence: true
 
-
   #いいね機能
   def favorited?(user)
    self.favorites.where(user_id: user.id).exists?
